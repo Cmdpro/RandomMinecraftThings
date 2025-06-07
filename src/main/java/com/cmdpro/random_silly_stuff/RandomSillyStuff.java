@@ -1,8 +1,6 @@
 package com.cmdpro.random_silly_stuff;
 
-import com.cmdpro.random_silly_stuff.registries.SoundRegistry;
-import com.cmdpro.random_silly_stuff.registries.WorldGuiComponentRegistry;
-import com.cmdpro.random_silly_stuff.registries.WorldGuiRegistry;
+import com.cmdpro.random_silly_stuff.registries.*;
 import com.cmdpro.random_silly_stuff.videos.Video;
 import com.cmdpro.random_silly_stuff.videos.VideoWorldGui;
 import net.minecraft.server.commands.PlaySoundCommand;
@@ -65,6 +63,9 @@ public class RandomSillyStuff
         SoundRegistry.SOUND_EVENTS.register(modEventBus);
         WorldGuiRegistry.WORLD_GUI_TYPES.register(modEventBus);
         WorldGuiComponentRegistry.WORLD_GUI_COMPONENTS.register(modEventBus);
+        BlockRegistry.BLOCKS.register(modEventBus);
+        BlockEntityRegistry.BLOCK_ENTITIES.register(modEventBus);
+        ParticleRegistry.PARTICLE_TYPES.register(modEventBus);
     }
 
     @SubscribeEvent

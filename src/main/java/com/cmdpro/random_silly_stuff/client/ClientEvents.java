@@ -1,5 +1,6 @@
-package com.cmdpro.random_silly_stuff;
+package com.cmdpro.random_silly_stuff.client;
 
+import com.cmdpro.random_silly_stuff.RandomSillyStuff;
 import com.cmdpro.random_silly_stuff.videos.Video;
 import net.minecraft.client.Minecraft;
 import net.neoforged.api.distmarker.Dist;
