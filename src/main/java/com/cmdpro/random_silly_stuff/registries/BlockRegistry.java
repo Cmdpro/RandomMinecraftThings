@@ -1,15 +1,22 @@
 package com.cmdpro.random_silly_stuff.registries;
 
+import com.cmdpro.databank.Databank;
+import com.cmdpro.databank.worldgui.WorldGuiType;
 import com.cmdpro.random_silly_stuff.RandomSillyStuff;
 import com.cmdpro.random_silly_stuff.block.RubberDuck;
 import com.cmdpro.random_silly_stuff.util.AnimatedBlockItemUtil;
 import net.minecraft.core.BlockPos;
+import com.cmdpro.random_silly_stuff.block.EmptinessBlock;
+import com.cmdpro.random_silly_stuff.videos.VideoWorldGuiType;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.*;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.api.distmarker.Dist;
@@ -37,8 +44,8 @@ public class BlockRegistry {
         event.registerItem(AnimatedBlockItemUtil.createBasicExtensions(RandomSillyStuff.locate("textures/block/rubber_duck.png"), RandomSillyStuff.locate("rubber_duck")), BlockRegistry.RUBBER_DUCK.get().asItem());
     }
 
-    private static <T extends Block> Supplier<T> registerBlock(final String name,
-                                                                     final Supplier<? extends T> block) {
+    public static final Supplier<Block> EMPTINESS = registerBlock("emptiness", () -> new EmptinessBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OBSIDIAN)));
+    private static <T extends Block> Supplier<T> registerBlock(final String name, final Supplier<? extends T> block) {
         return BLOCKS.register(name, block);
     }
 

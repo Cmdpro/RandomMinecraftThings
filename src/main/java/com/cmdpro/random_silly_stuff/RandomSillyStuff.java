@@ -67,6 +67,9 @@ public class RandomSillyStuff
         SoundRegistry.SOUND_EVENTS.register(modEventBus);
         WorldGuiRegistry.WORLD_GUI_TYPES.register(modEventBus);
         WorldGuiComponentRegistry.WORLD_GUI_COMPONENTS.register(modEventBus);
+        BlockRegistry.BLOCKS.register(modEventBus);
+        BlockEntityRegistry.BLOCK_ENTITIES.register(modEventBus);
+        ParticleRegistry.PARTICLE_TYPES.register(modEventBus);
     }
 
     @SubscribeEvent

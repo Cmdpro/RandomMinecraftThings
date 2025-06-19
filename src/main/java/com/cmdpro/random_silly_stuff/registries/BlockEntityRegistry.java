@@ -3,6 +3,8 @@ package com.cmdpro.random_silly_stuff.registries;
 import com.cmdpro.random_silly_stuff.RandomSillyStuff;
 import com.cmdpro.random_silly_stuff.block.RubberDuckBlockEntity;
 import com.cmdpro.random_silly_stuff.renderers.RubberDuckRenderer;
+import com.cmdpro.random_silly_stuff.block.EmptinessBlockEntity;
+import com.cmdpro.random_silly_stuff.client.renderers.block.EmptinessRenderer;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.neoforged.api.distmarker.Dist;
@@ -17,6 +19,10 @@ import java.util.function.Supplier;
 public class BlockEntityRegistry {
     public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES =
             DeferredRegister.create(BuiltInRegistries.BLOCK_ENTITY_TYPE, RandomSillyStuff.MODID);
+    public static final Supplier<BlockEntityType<EmptinessBlockEntity>> EMPTINESS =
+            register("emptiness", () ->
+                    BlockEntityType.Builder.of(EmptinessBlockEntity::new,
+                            BlockRegistry.EMPTINESS.get()).build(null));
     public static final Supplier<BlockEntityType<RubberDuckBlockEntity>> RUBBER_DUCK =
             register("rubber_duck", () ->
                     BlockEntityType.Builder.of(RubberDuckBlockEntity::new,
@@ -29,5 +35,6 @@ public class BlockEntityRegistry {
     @SubscribeEvent
     public static void registerRenderers(final EntityRenderersEvent.RegisterRenderers event) {
         event.registerBlockEntityRenderer(BlockEntityRegistry.RUBBER_DUCK.get(), RubberDuckRenderer::new);
+        event.registerBlockEntityRenderer(EMPTINESS.get(), EmptinessRenderer::new);
     }
 }
