@@ -1,0 +1,6 @@
+{
+  "parent": "builtin/entity",
+  "textures": {
+    "particle": "random_silly_stuff:block/nothing"
+  }
+}

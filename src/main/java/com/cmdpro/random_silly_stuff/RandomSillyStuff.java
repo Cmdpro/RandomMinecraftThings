@@ -1,10 +1,9 @@
 package com.cmdpro.random_silly_stuff;
 
-import com.cmdpro.random_silly_stuff.registries.SoundRegistry;
-import com.cmdpro.random_silly_stuff.registries.WorldGuiComponentRegistry;
-import com.cmdpro.random_silly_stuff.registries.WorldGuiRegistry;
+import com.cmdpro.random_silly_stuff.registries.*;
 import com.cmdpro.random_silly_stuff.videos.Video;
 import com.cmdpro.random_silly_stuff.videos.VideoWorldGui;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.commands.PlaySoundCommand;
 import net.neoforged.neoforge.client.event.RenderFrameEvent;
 import net.neoforged.neoforge.client.event.RenderLevelStageEvent;
@@ -62,6 +61,9 @@ public class RandomSillyStuff
     // FML will recognize some parameter types like IEventBus or ModContainer and pass them in automatically.
     public RandomSillyStuff(IEventBus modEventBus, ModContainer modContainer)
     {
+        BlockEntityRegistry.BLOCK_ENTITIES.register(modEventBus);
+        BlockRegistry.BLOCKS.register(modEventBus);
+        ItemRegistry.ITEMS.register(modEventBus);
         SoundRegistry.SOUND_EVENTS.register(modEventBus);
         WorldGuiRegistry.WORLD_GUI_TYPES.register(modEventBus);
         WorldGuiComponentRegistry.WORLD_GUI_COMPONENTS.register(modEventBus);
@@ -70,5 +72,8 @@ public class RandomSillyStuff
     @SubscribeEvent
     public static void registerCommands(RegisterCommandsEvent event) {
         SillyCommands.register(event.getDispatcher());
+    }
+    public static ResourceLocation locate(String path) {
+        return ResourceLocation.fromNamespaceAndPath(MODID, path);
     }
 }
