@@ -61,8 +61,6 @@ public class RandomSillyStuff
     // FML will recognize some parameter types like IEventBus or ModContainer and pass them in automatically.
     public RandomSillyStuff(IEventBus modEventBus, ModContainer modContainer)
     {
-        BlockEntityRegistry.BLOCK_ENTITIES.register(modEventBus);
-        BlockRegistry.BLOCKS.register(modEventBus);
         ItemRegistry.ITEMS.register(modEventBus);
         SoundRegistry.SOUND_EVENTS.register(modEventBus);
         WorldGuiRegistry.WORLD_GUI_TYPES.register(modEventBus);
